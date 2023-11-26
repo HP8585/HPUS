@@ -15,7 +15,7 @@ const copyLink = ()=>{
 
 onMounted(()=>{
     alert('This project is all made by HP (Hussain Panahy)!')
-    
+
     const timeState = JSON.parse(localStorage.getItem('timeLeft'))
     if(timeState){
         timeLeft.value = timeState?.timeLeft;
@@ -29,8 +29,8 @@ onMounted(()=>{
   <div class="body">
     <div class="mainContainer" :class="shortendLink ? 'active':''">
       <div class="secondaryContainer">
-        <div>
-          <h1 class="w-[14em] text-4xl font-bold">
+        <div class="grid lg:block place-items-center">
+          <h1 class="w-[14em] text-4xl font-bold text-center lg:text-start">
             The Most Simple URL Shortener Ever !
           </h1>
           <p class="text-sm w-96 my-4">
@@ -80,13 +80,13 @@ onMounted(()=>{
   @apply place-items-center grid bg-slate-200 w-full h-screen;
 }
 .mainContainer {
-  @apply relative overflow-hidden shadow-xl text-white rounded-xl mx-auto w-[50em] h-[28em] bg-gradient-to-br from-orange-500 to-orange-700;
+  @apply relative overflow-hidden shadow-xl text-white rounded-xl mx-auto w-[30em] lg:w-[50em] lg:h-[28em] bg-gradient-to-br from-orange-500 to-orange-700;
 }
 .mainContainer.active{
     @apply h-[32em]
 }
 .secondaryContainer {
-  @apply flex items-center px-16 py-20;
+  @apply flex flex-col-reverse lg:flex-row items-center px-16 py-20;
 }
 input {
   @apply rounded w-80 h-10 px-4 text-black outline-none focus:ring-2 ring-orange-400 mb-2;
