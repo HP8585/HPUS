@@ -5,8 +5,7 @@ import * as pkg from 'vue-toastification'
 
 export const fetchAPI = ()=>{
 
-const { useToast } = pkg;
-const toast = useToast();
+const toast = pkg.useToast();
 
 function triggerErrToast(msg){
   toast.error(msg, {
