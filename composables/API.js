@@ -5,10 +5,10 @@ import * as pkg from 'vue-toastification'
 
 export const fetchAPI = ()=>{
 
-const toast = pkg.useToast();
+const toast = pkg.useToast;
 
 function triggerErrToast(msg){
-  toast.error(msg, {
+  toast().error(msg, {
        position: "top-right",
        timeout: 5000,
        closeOnClick: true,
