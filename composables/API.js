@@ -1,11 +1,13 @@
 import axios from 'axios'
 import * as yup from 'yup';
-import { useToast } from 'vue-toastification'
+import * as pkg from 'vue-toastification'
 
 
 export const fetchAPI = ()=>{
 
+const { useToast } = pkg;
 const toast = useToast();
+
 function triggerErrToast(msg){
   toast.error(msg, {
        position: "top-right",
