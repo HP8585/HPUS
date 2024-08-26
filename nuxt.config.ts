@@ -2,14 +2,13 @@
 export default defineNuxtConfig({
   devtools: { enabled: true },
   css: ['~/assets/css/main.css'],
-
+  // modules:['@nuxtjs/toast'],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-
   app:{
     head:{
       link:[

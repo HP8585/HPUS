@@ -1,6 +1,5 @@
 <script setup>
 const copied = ref(false)
-const longURL = ref(null)
 
 const { timeLeft, startTimer, formattedTimer } = timeStatus()
 const { fetchData, isLoading, shortendLink, slug, url } = fetchAPI()
@@ -31,7 +30,7 @@ onMounted(()=>{
       <div class="secondaryContainer">
         <div class="grid lg:block place-items-center">
           <h1 class="w-[14em] text-4xl font-bold text-center lg:text-start">
-            The Most Simple URL Shortener Ever !
+            The Most Simple&Free URL Shortener Ever !
           </h1>
           <p class="text-sm w-96 my-4">
             Shorten any URL link in a matter of a few seconds without any toil
@@ -71,7 +70,7 @@ onMounted(()=>{
         </div>
         <div>
           <img src="/download.svg" class="w-44" />
-          <h1 class="text-7xl font-bold text-center py-10 brand">Bitly</h1>
+          <h1 class="text-7xl font-bold text-center py-10 brand">HPUS</h1>
         </div>
       </div>
     </div>
@@ -84,7 +83,7 @@ onMounted(()=>{
   @apply place-items-center grid bg-slate-200 w-full h-screen;
 }
 .mainContainer {
-  @apply relative overflow-hidden shadow-xl text-white rounded-xl mx-auto w-[30em] lg:w-[50em]
+  @apply relative overflow-hidden shadow-xl text-white rounded-xl mx-auto w-[25em] sm:w-[30em] lg:w-[50em]
   lg:h-[30em] bg-gradient-to-br from-orange-500 to-orange-700;
 }
 .mainContainer.active{
@@ -100,7 +99,7 @@ input {
     @apply w-72 focus:ring-0
 }
 .fa-solid{
-    @apply text-orange-600 absolute right-2 top-1/2 -translate-y-5 text-lg cursor-pointer 
+    @apply text-orange-600 absolute right-2 top-1/2 -translate-y-1/2 text-lg cursor-pointer 
 }
 button {
   @apply bg-white text-orange-600 font-bold w-fit mt-3 rounded-lg px-4 py-2;

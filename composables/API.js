@@ -1,15 +1,32 @@
 import axios from 'axios'
 import * as yup from 'yup';
-
+import { useToast } from 'vue-toastification'
 
 
 export const fetchAPI = ()=>{
-    
+
+const toast = useToast();
+function triggerErrToast(msg){
+  toast.error(msg, {
+       position: "top-right",
+       timeout: 5000,
+       closeOnClick: true,
+       pauseOnFocusLoss: true,
+       pauseOnHover: true,
+       draggable: true,
+       draggablePercent: 0.6,
+       showCloseButtonOnHover: true,
+       hideProgressBar: false,
+       closeButton: "button",
+       rtl: false
+})
+}
+
 const { startTimer, timeLeft, intervalId } = timeStatus()
 const schema = yup.object().shape({
     url: yup.string().url().required("URL is required"),
     slug: yup.string().min(4, "Slug must be at least 4 characters").max(8, "Slug must be at most 8 characters")
-    .nullable().optional()
+    .nullable().optional().matches(/^\S*$/, "Slug cannot contain spaces")
 });
 
     const isLoading = useState('loading', ()=> false);
@@ -22,14 +39,15 @@ const schema = yup.object().shape({
         try{
             isLoading.value = true;
             
-        await schema.validate({
-            url: url.value,
-             slug: slug.value
-        });
-          const response = await axios.post('https://hp-us.vercel.app/url', {
-            url: url.value,
-            slug: slug.value
-          })
+            const body = ref({
+                url: url.value,
+                slug: slug.value
+            })
+            if(body.value.slug == null || body.value.slug === '' || body.value.slug == ' '){
+                delete body.value.slug
+            }
+        await schema.validate(body.value);
+          const response = await axios.post('https://hp-us.vercel.app/url', body.value)
           console.log(response.data);
           
           if(response?.data?.new_url){
@@ -45,10 +63,11 @@ const schema = yup.object().shape({
             // Check if the error is a Yup validation error
             if (e.name === 'ValidationError') {
                 e.errors.forEach(error => {
-                    alert(error); // Call your alarm function here with the error reason
+                    triggerErrToast(error)
                 });
             } else {
                 console.error(e); // Log unexpected errors
+                triggerErrToast(e.response.data.message)
             }
             
         }finally{
