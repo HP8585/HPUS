@@ -2,7 +2,7 @@ export const timeStatus = ()=>{
 
     const intervalId = useState('intervalId', ()=> null)
     const timeLeft = useState('timeLeft', ()=> 0)
-    const formattedTimer = ref(null)
+    const formattedTimer = useState('formattedTimer', ()=> null)
 
     const startTimer = ()=>{
         intervalId.value = setInterval(()=>{
