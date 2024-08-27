@@ -29,7 +29,7 @@ onMounted(()=>{
     <div class="mainContainer" :class="shortendLink ? 'active':''">
       <div class="secondaryContainer">
         <div class="grid lg:block place-items-center">
-          <h1 class="w-[14em] text-4xl font-bold text-center lg:text-start">
+          <h1 class="text-2xl sm:text-4xl font-bold text-center lg:text-start">
             The Most Simple&Free URL Shortener Ever !
           </h1>
           <p class="text-sm w-96 my-4">
@@ -37,7 +37,7 @@ onMounted(()=>{
             and having to registrate or watch any annoying ads. All for Free,
             All for YOU.
           </p>
-          <div class="flex flex-col mt6">
+          <div class="flex flex-col">
             <input
               type="text"
               placeholder="e.g. https://hp-us.vercel.app/"
@@ -77,10 +77,14 @@ onMounted(()=>{
   </div>
   <div class="h-96"></div>
 </template>
-
+<style>
+body {
+  @apply place-items-center grid bg-slate-200 w-full ;
+}
+</style>
 <style scoped>
 .body {
-  @apply place-items-center grid bg-slate-200 w-full h-screen;
+  @apply grid place-items-center h-screen ;
 }
 .mainContainer {
   @apply relative overflow-hidden shadow-xl text-white rounded-xl mx-auto w-[25em] sm:w-[30em] lg:w-[50em]
